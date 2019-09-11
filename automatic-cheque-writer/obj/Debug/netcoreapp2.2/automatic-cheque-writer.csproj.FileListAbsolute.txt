@@ -1,0 +1,14 @@
+E:\Development\C#\entegy-backend\automatic-cheque-writer\bin\Debug\netcoreapp2.2\automatic-cheque-writer.deps.json
+E:\Development\C#\entegy-backend\automatic-cheque-writer\bin\Debug\netcoreapp2.2\automatic-cheque-writer.runtimeconfig.json
+E:\Development\C#\entegy-backend\automatic-cheque-writer\bin\Debug\netcoreapp2.2\automatic-cheque-writer.runtimeconfig.dev.json
+e:\Development\C#\entegy-backend\automatic-cheque-writer\bin\Debug\netcoreapp2.2\automatic-cheque-writer.dll
+e:\Development\C#\entegy-backend\automatic-cheque-writer\bin\Debug\netcoreapp2.2\automatic-cheque-writer.pdb
+e:\Development\C#\entegy-backend\automatic-cheque-writer\obj\Debug\netcoreapp2.2\automatic-cheque-writer.csprojAssemblyReference.cache
+e:\Development\C#\entegy-backend\automatic-cheque-writer\obj\Debug\netcoreapp2.2\automatic-cheque-writer.csproj.CoreCompileInputs.cache
+e:\Development\C#\entegy-backend\automatic-cheque-writer\obj\Debug\netcoreapp2.2\automatic-cheque-writer.RazorAssemblyInfo.cache
+e:\Development\C#\entegy-backend\automatic-cheque-writer\obj\Debug\netcoreapp2.2\automatic-cheque-writer.RazorAssemblyInfo.cs
+e:\Development\C#\entegy-backend\automatic-cheque-writer\obj\Debug\netcoreapp2.2\automatic-cheque-writer.AssemblyInfoInputs.cache
+e:\Development\C#\entegy-backend\automatic-cheque-writer\obj\Debug\netcoreapp2.2\automatic-cheque-writer.AssemblyInfo.cs
+e:\Development\C#\entegy-backend\automatic-cheque-writer\obj\Debug\netcoreapp2.2\automatic-cheque-writer.RazorTargetAssemblyInfo.cache
+e:\Development\C#\entegy-backend\automatic-cheque-writer\obj\Debug\netcoreapp2.2\automatic-cheque-writer.dll
+e:\Development\C#\entegy-backend\automatic-cheque-writer\obj\Debug\netcoreapp2.2\automatic-cheque-writer.pdb
