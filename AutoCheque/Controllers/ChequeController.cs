@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using AutoCheque.Models;
-
 
 namespace AutoCheque.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ChequeController : ControllerBase
     {
@@ -16,42 +11,43 @@ namespace AutoCheque.Controllers
         [HttpGet]
         public ActionResult<string> Get()
         {
-            return "If you want me to work my magic, you have to give me a number value. e.g. api/cheque/782";
+            var cheque = new ChequeModel(error: Constants.Errors.NoInputError);
+            return new JsonResult(cheque); 
         }
 
         // GET api/values/5
         [HttpGet("{input}")]
         public ActionResult<string> Get(string input)
         {
+            var cheque = new ChequeModel();
             double n;
             if(!double.TryParse(input, out n))
             {
-                return "Sorry friend, you need to enter a number";
+                cheque.Error = Constants.Errors.NumberInputError;
+                return new JsonResult(cheque);
             };
 
             if(n == 0)
             {
-                return "Hold up, who wants a cheque for $0.00? Seems like a waste of paper. Try entering a number greater than 0";
+                cheque.Error = Constants.Errors.ZeroInputError;
+                return new JsonResult(cheque);
             }  
 
             if(n < 0)
             {
-                return "Sneaky, trying to get a cheque that pays you! Unfortunately, you need to enter a positive number";
+                cheque.Error = Constants.Errors.NegitiveNumberError;
+                return new JsonResult(cheque);
             } 
 
-            if (n > 100000000)
+            if (n > 9999999999999)
             {
-                return "Over 100 million? That is too rich for this simple program. Maybe talk to your accountant for that one";
+                cheque.Error = Constants.Errors.Over999TrillionError;
+                return new JsonResult(cheque);
             }
             
-            var cheque = new ChequeModel();
-            return cheque.ConvertInputToNumberWords(n);
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
+            
+            cheque.Cheque = cheque.ConvertInputToNumberWords(n);
+            return new JsonResult(cheque);
         }
     }
 }

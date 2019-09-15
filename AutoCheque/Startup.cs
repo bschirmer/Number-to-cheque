@@ -42,7 +42,17 @@ namespace AutoCheque
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                "Default",
+                "{controller}/{id}",
+                new { controller = "Cheque"});
+
+                routes.MapRoute("NotFound",
+                                "{*url}",
+                                new { controller = "Error", action = "PageNotFound" });
+            });
         }
     }
 }
