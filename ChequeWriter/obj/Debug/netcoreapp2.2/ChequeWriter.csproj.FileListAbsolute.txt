@@ -15,7 +15,6 @@ e:\Development\C#\entegy-backend\ChequeWriter\obj\Debug\netcoreapp2.2\ChequeWrit
 e:\Development\C#\entegy-backend\ChequeWriter\obj\Debug\netcoreapp2.2\ChequeWriter.TagHelpers.output.cache
 e:\Development\C#\entegy-backend\ChequeWriter\obj\Debug\netcoreapp2.2\ChequeWriter.RazorCoreGenerate.cache
 e:\Development\C#\entegy-backend\ChequeWriter\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
-e:\Development\C#\entegy-backend\ChequeWriter\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
 e:\Development\C#\entegy-backend\ChequeWriter\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
 e:\Development\C#\entegy-backend\ChequeWriter\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 e:\Development\C#\entegy-backend\ChequeWriter\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
