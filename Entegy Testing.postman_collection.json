@@ -1,0 +1,886 @@
+{
+	"info": {
+		"_postman_id": "7c41677d-cf76-41bc-827b-91bb6a0bf6b1",
+		"name": "Entegy Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Not valid route",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Not Valid input\", function () {",
+							"     pm.response.to.have.status(404);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(null);",
+							"    pm.expect(jsonData.error).to.eql(\"The route you have entered is not valid. Try https://localhost:5001/cheque\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "No Value: Generic input error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"No Value: Generic input error\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(null);",
+							"    pm.expect(jsonData.error).to.eql(\"If you want me to work my magic, you have to give me a number value. e.g. https://localhost:5001/cheque/782\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "String input: Not a Number error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"String input: Not a Number error\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(null);",
+							"    pm.expect(jsonData.error).to.eql(\"Sorry friend, you need to enter a number\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/one hundred dollars?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"one hundred dollars"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Zero Value: Zero input error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Zero Value: Zero input error\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(null);",
+							"    pm.expect(jsonData.error).to.eql(\"Hold up, who wants a cheque for $0.00? Seems like a waste of paper. Try entering a number greater than 0\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/0?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"0"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative input: Negative input error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Negative input: Negative input error\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(null);",
+							"    pm.expect(jsonData.error).to.eql(\"Sneaky, trying to get a cheque that pays you! Unfortunately, you need to enter a positive number\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/-95.32?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"-95.32"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Its over 9000: Input too large",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Its over 9000: Input too large\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(null);",
+							"    pm.expect(jsonData.error).to.eql(\"Over 999 trillion? That is too rich for this simple program. Maybe talk to your accountant for that one\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/996578513243256?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"996578513243256"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: 1 cent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: 1 cent\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"ONE CENT ONLY\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/.01?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						".01"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: 1 dollar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: 1 dollar\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"ONE DOLLAR\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/1.00?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"1.00"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: Under 10, whole dollar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: Under 10, whole dollar\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"FIVE DOLLARS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/5?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"5"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: Under 10, with cents",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: Under 10, with cents\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"EIGHT DOLLARS AND SIXTY FOUR CENTS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/8.64?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"8.64"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: Teens, whole dollar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: Teens, whole dollar\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"SEVENTEEN DOLLARS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/17?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"17"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: Teens, with cents",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: Teens, with cents\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"FOURTEEN DOLLARS AND SIXTY NINE CENTS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/14.69?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"14.69"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: under 100",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: under 100\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"FOURTY SIX DOLLARS AND SEVENTY NINE CENTS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/46.79?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"46.79"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: under 1000",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: under 1000\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"SIX HUNDRED AND NINETY EIGHT DOLLARS AND THIRTY FOUR CENTS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/698.34?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"698.34"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: over 1000",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: over 1000\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"SIX THOUSAND FIVE HUNDRED AND FOURTY SEVEN DOLLARS AND THIRTY TWO CENTS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/6547.32?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"6547.32"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: over 100,000",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: over 100,000\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"ONE HUNDRED AND SIX THOUSAND FIVE HUNDRED AND FOURTY SEVEN DOLLARS AND THIRTY TWO CENTS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/106547.32?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"106547.32"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: over 1,000,000",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: over 1,000,000\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"EIGHT MILLION NINE HUNDRED AND SIX THOUSAND FIVE HUNDRED AND FOURTY SEVEN DOLLARS AND THREE CENTS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/8906547.03?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"8906547.03"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: over 1,000,000,000",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: over 1,000,000,000\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"NINE BILLION TWENTY FOUR MILLION THREE HUNDRED AND SIXTY FOUR THOUSAND AND TWELVE DOLLARS AND THIRTY TWO CENTS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/9,024,364,012.32?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"9,024,364,012.32"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real money: over 1,000,000,000,000",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real money: over 1,000,000,000,000\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"ONE TRILLION NINETEEN BILLION TWENTY FOUR MILLION THREE HUNDRED AND SIXTY FOUR THOUSAND AND TWELVE DOLLARS AND THIRTY TWO CENTS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/1,019,024,364,012.32?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"1,019,024,364,012.32"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Real Money: rounding ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f38271c1-a2ed-42c0-b569-a29873049694",
+						"exec": [
+							"pm.test(\"Real Money: rounding\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.cheque).to.eql(\"SIXTY FIVE DOLLARS AND THIRTY TWO CENTS\");",
+							"    pm.expect(jsonData.error).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/cheque/65.3296541?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"cheque",
+						"65.3296541"
+					],
+					"query": [
+						{
+							"key": "inpu",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
