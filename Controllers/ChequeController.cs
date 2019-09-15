@@ -46,7 +46,7 @@ namespace AutoCheque.Controllers
             }
             
             
-            cheque.Cheque = cheque.ConvertInputToNumberWords(n);
+            cheque.Cheque = ChequeConverter.ConvertInputToNumberWords(n);
             return new JsonResult(cheque);
         }
     }
